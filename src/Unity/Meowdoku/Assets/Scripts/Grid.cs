@@ -15,6 +15,7 @@ public class Grid : MonoBehaviour
 
     private List<GameObject> grid_boxes = new();
     private int select_grid_data = -1;
+
     void Start()
     {
         if (grid_box.GetComponent<Grid_Square>() == null)

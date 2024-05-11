@@ -44,11 +44,11 @@ public class Lives : MonoBehaviour
 
     private void OnEnable()
     {
-        Game_Events.On_Wrong_Number += WrongNumber;
+        //Game_Events.On_Wrong_Number += WrongNumber;
     }
 
     private void OnDisable()
     {
-        Game_Events.On_Wrong_Number -= WrongNumber;    
+       // Game_Events.On_Wrong_Number -= WrongNumber;    
     }
 }
