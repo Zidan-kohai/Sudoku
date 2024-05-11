@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Game_Events : MonoBehaviour
 {
-    public delegate void Place_Number(int number);
+    public delegate void Place_Number(NumberData data);
     public static event Place_Number On_Place_Number;
 
-    public static void Place_Number_Func(int number)
+    public static void Place_Number_Func(NumberData data)
     {
         if(On_Place_Number != null)
-            On_Place_Number(number);
+            On_Place_Number(data);
     }
 
     public delegate void Selected_Square(int square_index);

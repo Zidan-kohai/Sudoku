@@ -93,7 +93,7 @@ public class Grid : MonoBehaviour
     private void Set_Grid_Numbers(string level)
     {
         select_grid_data = Random.Range(0, Sudoku_Data.Instance.sudoku_board[level].Count);
-        var data = Sudoku_Data.Instance.sudoku_board[level][select_grid_data];
+        Sudoku_Data.Sudoku_Board_Data data = Sudoku_Data.Instance.sudoku_board[level][select_grid_data];
 
         Set_Grid_Data(data);
     }

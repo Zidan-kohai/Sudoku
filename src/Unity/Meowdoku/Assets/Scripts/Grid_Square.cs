@@ -9,6 +9,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
 {
     public GameObject number_text;
     public List<GameObject> note_list;
+    public List<NumberData> all_Number_Dates;
     private bool toggle_note;
     private bool toggle_erase;
     private int num = 0;
@@ -35,47 +36,56 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
         SetClearNotes();
     }
 
-    public List<string> Get_Note() { 
-        List<string> notes = new List<string>();
-        foreach (var number in note_list) {
-            notes.Add(number.GetComponent<Text>().text);
-        }
-        return notes;
-    }
+    //public List<string> Get_Note() { 
+    //    List<string> notes = new List<string>();
+    //    foreach (var number in note_list) {
+    //        notes.Add(number.GetComponent<Text>().text);
+    //    }
+    //    return notes;
+    //}
 
     private void SetClearNotes()
     {
         foreach (var number in note_list)
         {
-            if (number.GetComponent<Text>().text == "0")
-            {
-                number.GetComponent<Text>().text = " ";
-            }
-        }
+            number.SetActive(false);
+        }   
     }
 
-    private void Set_Note(int value) {
+    private void Set_Note(int value) 
+    {
         foreach (var number in note_list)
         {
             if(value <= 0)
-                number.GetComponent<Text>().text = " ";
+                number.SetActive(false);
             else
-                number.GetComponent<Text>().text =  value.ToString();
+                number.SetActive(true);
         }
     }
 
     private void SetOneNumberNote(int value, bool update = false)
     {
         if (toggle_note == false && update == false)
+        {
             return;
+        }
         if (value <= 0)
-            note_list[value - 1].GetComponent<Text>().text = " ";
+        {
+            foreach (GameObject number in note_list)
+            {
+                number.SetActive(false);
+            }
+        }
         else
         {
-            if (note_list[value - 1].GetComponent<Text>().text == " " || update)
-                note_list[value - 1].GetComponent<Text>().text = value.ToString();
+            if (!note_list[value - 1].activeSelf || update)
+            {
+                note_list[value - 1].SetActive(true);
+            }
             else
-                note_list[value - 1].GetComponent <Text>().text = " ";
+            {
+                note_list[value - 1].SetActive(false);
+            }
         }
     }
 
@@ -120,9 +130,20 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
    public void DisplayText()
     {
         if (num <= 0)
-            number_text.GetComponent<Text>().text = " ";
+        {
+            number_text.GetComponent<Image>().sprite = null;
+        }
         else
-            number_text.GetComponent<Text>().text = num.ToString();
+        {
+            foreach (var item in all_Number_Dates)
+            {
+                if(num == item.number)
+                {
+                    number_text.GetComponent<Image>().sprite = item.fruitIcon;
+                    number_text.GetComponent<Image>().color = Color.white;
+                }
+            }
+        }
     }
 
     public void SetNumber(int number)
@@ -153,19 +174,19 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
         Game_Events.On_Erase_On -= On_Toggle_Erase;
     }
 
-    public void OnSetNumber(int number)
+    public void OnSetNumber(NumberData data)
     {
         selected = IsSelected();
         if (selected && default_value == false)
         {
             if(toggle_note == true && is_wrong == false)
             {
-                SetOneNumberNote(number);
+                SetOneNumberNote(data.number);
             }
             else if(toggle_note == false)
             {
                 Set_Note(0);
-                SetNumber(number);
+                SetNumber(data.number);
                 if (num != correct_num)
                 {
                     is_wrong = true;
