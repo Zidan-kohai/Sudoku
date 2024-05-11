@@ -3656,6 +3656,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148377701}
   m_CullTransparentMesh: 1
+--- !u!1 &1197324804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197324805}
+  - component: {fileID: 1197324806}
+  m_Layer: 0
+  m_Name: DataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197324805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197324804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1197324806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197324804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf5885609eab1149b1483a8ce461725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerData:
+    musicVolume: 1
+    soundVolume: 1
 --- !u!1 &1201580373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,7 +4128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1358681436}
   - component: {fileID: 1358681438}
-  - component: {fileID: 1358681437}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -4111,19 +4157,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 460, y: 80}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1358681437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358681435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00150dab918ec2241b236ce2edb3cda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 01afd7fa3ea00ab449d59b4ed336ef95, type: 2}
 --- !u!114 &1358681438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4175,10 +4208,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1358681437}
-        m_TargetAssemblyTypeName: Volume, Assembly-CSharp
-        m_MethodName: Set_Vol
-        m_Mode: 0
+      - m_Target: {fileID: 2098128268}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
+        m_MethodName: SetMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5361,7 +5394,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1815863144}
   - component: {fileID: 1815863146}
-  - component: {fileID: 1815863145}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -5391,19 +5423,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 460, y: 80}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1815863145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815863143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00150dab918ec2241b236ce2edb3cda4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 01afd7fa3ea00ab449d59b4ed336ef95, type: 2}
 --- !u!114 &1815863146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5455,10 +5474,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1815863145}
-        m_TargetAssemblyTypeName: Volume, Assembly-CSharp
-        m_MethodName: Set_Vol
-        m_Mode: 0
+      - m_Target: {fileID: 2098128268}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
+        m_MethodName: SetSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6079,6 +6098,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968408522}
   m_CullTransparentMesh: 1
+--- !u!1 &2098128266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098128267}
+  - component: {fileID: 2098128268}
+  m_Layer: 0
+  m_Name: VolumeSetting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098128267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098128266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098128268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098128266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49fc93d5868aa547ac49986d1745f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolume: 0
+  soundVolume: 0
+  musicMixer: {fileID: 24100000, guid: 01afd7fa3ea00ab449d59b4ed336ef95, type: 2}
+  soundMixer: {fileID: 24100000, guid: 062934b2353659c4685258f68d0e9d5e, type: 2}
+  musicSlider: {fileID: 1358681438}
+  soundSlider: {fileID: 1815863146}
 --- !u!1 &2104417654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6383,3 +6452,5 @@ SceneRoots:
   - {fileID: 104238549}
   - {fileID: 2130311914}
   - {fileID: 736084355}
+  - {fileID: 2098128267}
+  - {fileID: 1197324805}

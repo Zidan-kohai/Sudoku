@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
             string minute = Leading_Zero(span.Minutes);
             string second = Leading_Zero(span.Seconds);
 
-            timer_text.text = hour + ":" + minute + ":" + second;
+            timer_text.text = minute + ":" + second;
         }
     }
 
