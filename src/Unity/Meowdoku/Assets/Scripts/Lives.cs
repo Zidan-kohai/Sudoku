@@ -1,27 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Lives : MonoBehaviour
 {
-    public List<GameObject> error_image;
+    public TextMeshProUGUI error_text;
     public GameObject game_over;
     int lives = 0;
     int error_num = 0;
 
     void Start()
     {
-        lives = error_image.Count;
+        lives = 3;
         error_num = 0;
         Set_Game_Over_Menu(false);
     }
 
     private void WrongNumber()
     {
-        if (error_num < error_image.Count) { 
-        error_image[error_num].SetActive(true);
-        error_num++;
-        lives--;
+        if (error_num < 3) 
+        {
+            error_num++;
+            lives--;
+            error_text.text = $"Wasterers {error_num}/{3}";
         }
 
         Check_Game_Over();
@@ -44,11 +46,11 @@ public class Lives : MonoBehaviour
 
     private void OnEnable()
     {
-        //Game_Events.On_Wrong_Number += WrongNumber;
+        Game_Events.On_Wrong_Number += WrongNumber;
     }
 
     private void OnDisable()
     {
-       // Game_Events.On_Wrong_Number -= WrongNumber;    
+       Game_Events.On_Wrong_Number -= WrongNumber;    
     }
 }
