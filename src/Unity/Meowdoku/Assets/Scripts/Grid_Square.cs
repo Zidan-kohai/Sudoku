@@ -131,7 +131,10 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
     {
         if (num <= 0)
         {
-            number_text.GetComponent<Image>().sprite = null;
+            Image image =  number_text.GetComponent<Image>();
+            image.sprite = null;
+            image.color = new Color(1, 1, 1, 0);
+            Set_Square_Colour(Color.white);
         }
         else
         {
@@ -146,9 +149,34 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
         }
     }
 
+
+    public void CancallSetNumber(int number)
+    {
+        num = number;
+        if (num != correct_num)
+        {
+            is_wrong = true;
+            var colors = this.colors;
+            colors.normalColor = Color.red;
+            this.colors = colors;
+            default_value = false;
+        }
+        else
+        {
+            is_wrong = false;
+            default_value = true;
+            var colors = this.colors;
+            colors.normalColor = Color.white;
+            this.colors = colors;
+        }
+
+        DisplayText();
+    }
+
     public void SetNumber(int number)
     {
         num = number;
+
         DisplayText();
     }
 
@@ -185,8 +213,13 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
             }
             else if(toggle_note == false)
             {
+                //We save turn with last value on grid square
+                GameTurnController.Instance.AddSimpleTurn(this, num);
+
+
                 Set_Note(0);
                 SetNumber(data.number);
+
                 if (num != correct_num)
                 {
                     is_wrong = true;
@@ -204,6 +237,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
                     colors.normalColor = Color.white;
                     this.colors = colors;
                 }
+
             }
             Game_Events.On_Check_Complete_Func();   // Check if game should be over
         }
