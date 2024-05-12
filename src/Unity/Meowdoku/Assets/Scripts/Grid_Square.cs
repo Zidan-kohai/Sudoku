@@ -345,6 +345,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
             .SetLoops(3)
             .OnComplete(() =>
             {
+                number_text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Image image = number_text.GetComponent<Image>();
                 image.sprite = null;
                 image.color = new Color(1, 1, 1, 0);
@@ -352,6 +353,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
 
             }).OnKill(() =>
             {
+                number_text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Image image = number_text.GetComponent<Image>();
                 image.sprite = null;
                 image.color = new Color(1, 1, 1, 0);
