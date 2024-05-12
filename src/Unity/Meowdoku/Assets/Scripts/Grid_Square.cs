@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Xml.Schema;
+using System;
+using DG.Tweening;
 
 public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPointerUpHandler, IPointerExitHandler
 {
@@ -20,7 +22,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
     private int square_index = -1;
     private bool default_value = false;
     private bool is_wrong = false;
-
+    private Sequence hintAnimation;
     public bool Is_correct() { return num == correct_num; }
     public bool Wrong_Square_Value(){ return is_wrong; }
 
@@ -216,6 +218,8 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (hintAnimation != null) hintAnimation.Kill();
+
         selected = IsSelected();
         selected = true;
         Game_Events.Square_Selected_Func(square_index);
@@ -317,5 +321,37 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
     public void OnSubmit(BaseEventData eventData)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Hint()
+    {
+        foreach (var item in all_Number_Dates)
+        {
+            if (correct_num == item.number)
+            {
+                number_text.GetComponent<Image>().sprite = item.fruitIcon;
+                number_text.GetComponent<Image>().color = Color.white;
+            }
+        }
+
+        hintAnimation = DOTween.Sequence()
+            .SetEase(Ease.OutSine)
+            .Append(number_text.transform.DOScale(1.4f, 1f))
+            .Append(number_text.transform.DOScale(0.9f, 1f))
+            .SetLoops(3)
+            .OnComplete(() =>
+            {
+                Image image = number_text.GetComponent<Image>();
+                image.sprite = null;
+                image.color = new Color(1, 1, 1, 0);
+                Set_Square_Colour(Color.white);
+
+            }).OnKill(() =>
+            {
+                Image image = number_text.GetComponent<Image>();
+                image.sprite = null;
+                image.color = new Color(1, 1, 1, 0);
+                Set_Square_Colour(Color.white);
+            });
     }
 }

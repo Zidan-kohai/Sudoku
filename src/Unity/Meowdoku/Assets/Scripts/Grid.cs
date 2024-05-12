@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -131,6 +132,25 @@ public class Grid : MonoBehaviour
                 comp.Set_Square_Colour(color);
             }
         }
+    }
+
+    public void Hint()
+    {
+        List<Grid_Square> freeSqueares = new List<Grid_Square>();
+            
+        foreach (GameObject item in grid_boxes)
+        {
+            Grid_Square square = item.GetComponent<Grid_Square>();
+
+            if(!square.Is_correct())
+            {
+                freeSqueares.Add(square);
+            }
+        }
+
+        int randomIndex = Random.Range(0, freeSqueares.Count);
+
+        freeSqueares[randomIndex].Hint();
     }
 
     public void On_Square_Selected(int square_index)
