@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System.Xml.Schema;
 
 public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPointerUpHandler, IPointerExitHandler
 {
@@ -106,6 +107,28 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
     {
         if (selected && !default_value)
         {
+            //Check is current value note or just value and add turn
+            List<int> noteCount = new List<int>();
+
+            for (int i = 0; i < note_list.Count; i++)
+            {
+                if (note_list[i].activeSelf)
+                {
+                    noteCount.Add(i + 1);
+                }
+            }
+
+            if (noteCount.Count > 0)
+            {
+                GameTurnController.Instance.AddEraseTurn(this, true, 0, noteCount);
+            }
+            else
+            {
+                GameTurnController.Instance.AddEraseTurn(this, false, num, noteCount);
+            }
+
+
+
             if (is_wrong)
                 Set_Square_Colour(Color.white);
             is_wrong = false;
@@ -149,6 +172,17 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
         }
     }
 
+    public void CancalSetNumberNote(int value, bool update = false)
+    {
+        if (!note_list[value - 1].activeSelf || update)
+        {
+            note_list[value - 1].SetActive(true);
+        }
+        else
+        {
+            note_list[value - 1].SetActive(false);
+        }
+    }
 
     public void CancallSetNumber(int number)
     {
@@ -207,14 +241,35 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
         selected = IsSelected();
         if (selected && default_value == false)
         {
-            if(toggle_note == true && is_wrong == false)
+            if(toggle_note == true && num == 0)
             {
+                GameTurnController.Instance.AddNoteTurn(this, data.number);
+
                 SetOneNumberNote(data.number);
             }
             else if(toggle_note == false)
             {
-                //We save turn with last value on grid square
-                GameTurnController.Instance.AddSimpleTurn(this, num);
+                //Check is Has Note, need to add NoteToSimpleTurn instead of SimpleTurn to the CameTurnController
+
+                List<int> noteCount = new List<int>();
+
+                for(int i = 0; i < note_list.Count; i++)
+                {
+                    if (note_list[i].activeSelf)
+                    {
+                        noteCount.Add(i + 1);
+                    }
+                }
+
+                if(noteCount.Count > 0)
+                {
+                    GameTurnController.Instance.AddNoteToSimpleTurn(this, noteCount);
+                }
+                else
+                {
+                    //We save turn with last value on grid square
+                    GameTurnController.Instance.AddSimpleTurn(this, num);
+                }
 
 
                 Set_Note(0);

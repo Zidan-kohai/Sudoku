@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class GameTurnController : MonoBehaviour
 {
@@ -44,27 +45,57 @@ public class GameTurnController : MonoBehaviour
 
         Turns.Add(simpleTurn);
     }
+    public void AddEraseTurn(Grid_Square square, bool isNote, int number, List<int> noteNumbers)
+    {
+        EraseTurn simpleTurn = new EraseTurn()
+        {
+            Square = square,
+            IsNote = isNote,
+            Number = number,
+            NoteNumbers = noteNumbers
+        };
 
-
+        Turns.Add(simpleTurn);
+    }
     public void Cancell()
     {
         if (Turns.Count == 0) return;
 
         ITurn lastTurn = Turns[Turns.Count - 1];
 
-        if(lastTurn is SimpleTurn turn)
+        if(lastTurn is SimpleTurn simpleTurn)
         {
-            turn.Square.CancallSetNumber(turn.Number);
+            simpleTurn.Square.CancallSetNumber(simpleTurn.Number);
         }
-        else if(lastTurn is NoteTurn)
+        else if(lastTurn is NoteTurn NoteTurn)
         {
-
+            NoteTurn.Square.CancalSetNumberNote(NoteTurn.Number);
         }
-        else if(lastTurn is NoteToSimpleTurn)
+        else if(lastTurn is NoteToSimpleTurn NoteToSimpleTurn)
         {
+            NoteToSimpleTurn.Square.CancallSetNumber(0);
 
+            foreach(int noteValue in NoteToSimpleTurn.NoteNumbers)
+            {
+                NoteToSimpleTurn.Square.CancalSetNumberNote(noteValue);
+            }
         }
+        else if(lastTurn is EraseTurn eraseTurn)
+        {
+            if(eraseTurn.IsNote)
+            {
+                eraseTurn.Square.CancallSetNumber(0);
 
+                foreach (int noteValue in eraseTurn.NoteNumbers)
+                {
+                    eraseTurn.Square.CancalSetNumberNote(noteValue);
+                }
+            }
+            else
+            {
+                eraseTurn.Square.CancallSetNumber(eraseTurn.Number);
+            }
+        }
         Turns.Remove(lastTurn);
     }
 }
@@ -91,4 +122,12 @@ public struct NoteToSimpleTurn : ITurn
 {
     public Grid_Square Square;
     public List<int> NoteNumbers;
+}
+public struct EraseTurn : ITurn
+{
+    public Grid_Square Square;
+    public bool IsNote;
+    public int Number;
+    public List<int> NoteNumbers;
+
 }
