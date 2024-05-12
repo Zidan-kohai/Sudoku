@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It's easy to get through the level in 5 minutes
+  m_text: complete medium level in 5 minutes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
   m_sharedMaterial: {fileID: 1858000512925806684, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
@@ -2273,7 +2273,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.45
+  m_fontSize: 43.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It's easy to get through the level in 5 minutes
+  m_text: complete easy level in 5 minutes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
   m_sharedMaterial: {fileID: 1858000512925806684, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.45
+  m_fontSize: 47.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.65881985, g: 0.990566, b: 0.6985059, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3887,6 +3887,10 @@ MonoBehaviour:
     musicVolume: 1
     soundVolume: 1
     HintCount: 12
+    IsVibrationOn: 1
+    Achievement1: 0
+    Achievement2: 0
+    Achievement3: 0
 --- !u!1 &1201580373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,7 +4686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: It's easy to get through the level in 5 minutes
+  m_text: complete hard level in 5 minutes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
   m_sharedMaterial: {fileID: 1858000512925806684, guid: ecdd72801044cc443b46bfaca16ac66c, type: 2}
@@ -4709,7 +4713,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.45
+  m_fontSize: 47.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5067,7 +5071,7 @@ GameObject:
   - component: {fileID: 1618387145}
   - component: {fileID: 1618387144}
   m_Layer: 5
-  m_Name: Help
+  m_Name: RecordPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6393,7 +6397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 24.43, y: 9.73}
+  m_AnchoredPosition: {x: 24.429993, y: 9.73}
   m_SizeDelta: {x: 319.09, y: 69.47}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2028995249
@@ -6554,6 +6558,7 @@ GameObject:
   - component: {fileID: 2104417655}
   - component: {fileID: 2104417657}
   - component: {fileID: 2104417656}
+  - component: {fileID: 2104417658}
   m_Layer: 5
   m_Name: AchievementsPanel
   m_TagString: Untagged
@@ -6620,6 +6625,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104417654}
   m_CullTransparentMesh: 1
+--- !u!114 &2104417658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104417654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec97e004fd73c04b8f38a4315faff0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievement1: {fileID: 1124867172}
+  achievement2: {fileID: 1423431844}
+  achievement3: {fileID: 1918740399}
+  succesColor: {r: 0.3764706, g: 1, b: 0.7882353, a: 1}
 --- !u!1 &2129343012
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,26 @@ public class Win : MonoBehaviour
     {
         WinScreen.SetActive(true); // Win screen popup appears
         Set_Win_Menu(true);
+
+        //if we win less than 5 min we enable achiement
+        if (Timer.instance.Get_Seconds() < 300)
+        {
+            if(Game_Settings.Instance.Get_Game_Mode() == "Easy")
+            {
+                DataController.Instanse.PlayerData.Achievement1 = true;
+
+            }
+            else if(Game_Settings.Instance.Get_Game_Mode() == "Medium")
+            {
+                DataController.Instanse.PlayerData.Achievement2 = true;
+            }
+            else if (Game_Settings.Instance.Get_Game_Mode() == "Hard")
+            {
+                DataController.Instanse.PlayerData.Achievement3 = true;
+            }
+
+            DataController.Instanse.Save();
+        }
     }
 
     public void Set_Win_Menu(bool win) // Stops win time

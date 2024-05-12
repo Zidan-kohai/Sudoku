@@ -70,6 +70,10 @@ public class Timer : MonoBehaviour
         Game_Events.On_Win -= Win_Time;
     }
 
+    public float Get_Seconds()
+    {
+        return timer_value;
+    }
     public Text Get_Time()
     {
         return timer_text;
