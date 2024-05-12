@@ -18,6 +18,15 @@ public class Win : MonoBehaviour
         WinScreen.SetActive(true); // Win screen popup appears
         Set_Win_Menu(true);
 
+
+        RecordData record = new RecordData()
+        {
+            time = DateTime.Now,
+            value = TimeSpan.FromSeconds(Timer.instance.Get_Seconds())
+        };
+
+        DataController.Instanse.AddRecord(Game_Settings.Instance.Get_Game_Mode(), record);
+
         //if we win less than 5 min we enable achiement
         if (Timer.instance.Get_Seconds() < 300)
         {
