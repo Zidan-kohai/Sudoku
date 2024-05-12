@@ -286,6 +286,9 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
                     colors.normalColor = Color.red;
                     this.colors = colors;
 
+                    if(DataController.Instanse.PlayerData.IsVibrationOn)
+                        Handheld.Vibrate();
+
                     Game_Events.On_Wrong_Number_Func();
                 }
                 else
