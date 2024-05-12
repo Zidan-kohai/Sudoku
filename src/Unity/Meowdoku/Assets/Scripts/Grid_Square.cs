@@ -295,6 +295,7 @@ public class Grid_Square : Selectable, IPointerClickHandler, ISubmitHandler, IPo
                     var colors = this.colors;
                     colors.normalColor = Color.white;
                     this.colors = colors;
+                    GameTurnController.Instance.SuccesfullSound();
                 }
 
             }

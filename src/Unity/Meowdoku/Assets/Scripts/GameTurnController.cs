@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class GameTurnController : MonoBehaviour
     public static GameTurnController Instance;
 
     private List<ITurn> Turns = new List<ITurn>();
-
+    public AudioSource succesfullSound;
 
     public void Awake()
     {
@@ -97,6 +98,11 @@ public class GameTurnController : MonoBehaviour
             }
         }
         Turns.Remove(lastTurn);
+    }
+
+    public void SuccesfullSound()
+    {
+        succesfullSound.Play();
     }
 }
 
