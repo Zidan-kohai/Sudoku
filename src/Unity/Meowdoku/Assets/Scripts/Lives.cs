@@ -6,6 +6,7 @@ using UnityEngine;
 public class Lives : MonoBehaviour
 {
     public TextMeshProUGUI error_text;
+    public TextMeshProUGUI hardnest_text;
     public GameObject game_over;
     int lives = 0;
     int error_num = 0;
@@ -15,6 +16,8 @@ public class Lives : MonoBehaviour
         lives = 3;
         error_num = 0;
         Set_Game_Over_Menu(false);
+
+        hardnest_text.text = Game_Settings.Instance.Get_Game_Mode();
     }
 
     private void WrongNumber()
