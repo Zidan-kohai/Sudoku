@@ -3205,10 +3205,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 911141159}
-        m_TargetAssemblyTypeName: Volume, Assembly-CSharp
-        m_MethodName: Set_Vol
-        m_Mode: 0
+      - m_Target: {fileID: 204900014}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
+        m_MethodName: SetSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5255,10 +5255,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1504575199}
-        m_TargetAssemblyTypeName: Volume, Assembly-CSharp
-        m_MethodName: Set_Vol
-        m_Mode: 0
+      - m_Target: {fileID: 204900014}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
+        m_MethodName: SetMusic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
