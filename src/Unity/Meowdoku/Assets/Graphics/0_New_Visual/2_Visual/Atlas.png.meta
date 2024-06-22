@@ -315,9 +315,9 @@ TextureImporter:
       name: Atlas_9
       rect:
         serializedVersion: 2
-        x: 1887
+        x: 1893
         y: 3748
-        width: 144
+        width: 131
         height: 131
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
