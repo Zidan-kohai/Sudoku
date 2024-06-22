@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AchievementController : MonoBehaviour
 {
-    [SerializeField] private Image achievement1;
-    [SerializeField] private Image achievement2;
-    [SerializeField] private Image achievement3;
+    [SerializeField] private TextMeshProUGUI achievement1;
+    [SerializeField] private TextMeshProUGUI achievement2;
+    [SerializeField] private TextMeshProUGUI achievement3;
     [SerializeField] private Color succesColor;
 
 
