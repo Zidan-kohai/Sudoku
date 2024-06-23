@@ -22,3 +22,4 @@ public class HintButton : Selectable, IPointerClickHandler
         grid.Hint();
     }
 }
+    
