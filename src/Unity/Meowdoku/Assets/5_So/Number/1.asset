@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   number: 1
-  fruitIcon: {fileID: 21300000, guid: c807fcfcd1f94ea4da7510e2dcb0f473, type: 3}
+  fruitIcon: {fileID: -1315597399, guid: beb6f6031f528cf409a0a4a7cf77a42a, type: 3}
