@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class Number_Button : Selectable, IPointerClickHandler, ISubmitHandler, IPointerUpHandler, IPointerExitHandler
 {
     public NumberData data;
+    public UnityEvent onClick;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class Number_Button : Selectable, IPointerClickHandler, ISubmitHandler, I
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        onClick?.Invoke();
         Game_Events.Place_Number_Func(data);
     }
 

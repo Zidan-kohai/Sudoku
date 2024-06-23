@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Notes : Selectable, IPointerClickHandler
 {
+    public UnityEvent onClick;
     public Sprite On_image;
     public Sprite Off_image;
     bool toggle;
@@ -18,6 +20,7 @@ public class Notes : Selectable, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        onClick?.Invoke();
         toggle = !toggle;
         if(toggle)
             GetComponent<Image>().sprite = On_image;
