@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using YG;
 
 public class SwipeDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -58,7 +59,7 @@ public class SwipeDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 hardMode.sprite = unSelectSprite;
                 hardMode.rectTransform.sizeDelta = unSelectSpriteSize;
 
-                currentHardView.text = "Easy";
+                LocalizeHardnest("Easy");
                 break;
 
             case RecordController.Type.Medium:
@@ -71,7 +72,7 @@ public class SwipeDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 hardMode.sprite = unSelectSprite;
                 hardMode.rectTransform.sizeDelta = unSelectSpriteSize;
 
-                currentHardView.text = "Medium";
+                LocalizeHardnest("Medium");
                 break;
 
             case RecordController.Type.Hard:
@@ -84,8 +85,73 @@ public class SwipeDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 hardMode.sprite = selectSprite;
                 hardMode.rectTransform.sizeDelta = SelectSpriteSize;
 
-                currentHardView.text = "Hard";
+                LocalizeHardnest("Hard");
                 break;
+        }
+    }
+
+
+    private void LocalizeHardnest(string hardnest)
+    {
+        if (hardnest == "Easy")
+        {
+            if (YandexGame.savesData.language == "ru")
+            {
+                currentHardView.text = "Легкий";
+            }
+            else if (YandexGame.savesData.language == "en")
+            {
+                currentHardView.text = hardnest;
+            }
+            else
+            {
+                currentHardView.text = "Hafif";
+            }
+        }
+        else if (hardnest == "Medium")
+        {
+            if (YandexGame.savesData.language == "ru")
+            {
+                currentHardView.text = "Средний";
+            }
+            else if (YandexGame.savesData.language == "en")
+            {
+                currentHardView.text = hardnest;
+            }
+            else
+            {
+                currentHardView.text = "Orta";
+            }
+        }
+        else if (hardnest == "Hard")
+        {
+            if (YandexGame.savesData.language == "ru")
+            {
+                currentHardView.text = "Сложний";
+            }
+            else if (YandexGame.savesData.language == "en")
+            {
+                currentHardView.text = hardnest;
+            }
+            else
+            {
+                currentHardView.text = "Sert";
+            }
+        }
+        else if (hardnest == "Expert")
+        {
+            if (YandexGame.savesData.language == "ru")
+            {
+                currentHardView.text = "Эксперт";
+            }
+            else if (YandexGame.savesData.language == "en")
+            {
+                currentHardView.text = hardnest;
+            }
+            else
+            {
+                currentHardView.text = "Uzman";
+            }
         }
     }
 }
