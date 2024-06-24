@@ -28,7 +28,7 @@ public class DataController : MonoBehaviour
 
     public void Load()
     {
-        if(PlayerPrefs.HasKey(path))
+        if (PlayerPrefs.HasKey(path))
         {
             string json = PlayerPrefs.GetString(path);
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
