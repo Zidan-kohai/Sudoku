@@ -315,7 +315,7 @@ namespace YG.Insides
                 else if (scr.textMPComponent)
                 {
                     scr.uniqueFontTMP = (TMP_FontAsset)EditorGUILayout.ObjectField("Unique Font", scr.uniqueFontTMP, typeof(TMP_FontAsset), false);
-                    FontTMPSettingsDraw();
+                    //FontTMPSettingsDraw();
                 }
 #endif
                 GUILayout.EndVertical();
